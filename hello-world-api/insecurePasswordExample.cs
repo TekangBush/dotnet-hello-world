@@ -1,4 +1,7 @@
 using System;
+using System.IO;
+using System.Net;
+using System.Text;
 
 namespace hello_world_api
 {
@@ -21,6 +24,18 @@ namespace hello_world_api
             {
                 Console.WriteLine("Access denied.");
             }
+
+            // Insecurely storing password in a file
+            File.WriteAllText("password.txt", password);
+
+            // Sending password over an insecure channel
+            WebClient client = new WebClient();
+            client.UploadString("http://example.com", password);
+
+            // Using weak encryption
+            byte[] data = Encoding.UTF8.GetBytes(password);
+            string base64 = Convert.ToBase64String(data);
+            Console.WriteLine("Weakly encrypted password: " + base64);
         }
     }
 }
