@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -14,6 +14,9 @@ namespace hello_world_api
     {
         public static void Main(string[] args)
         {
+            // Call the insecure password example
+            InsecurePasswordExample.ShowPasswordVulnerabilities();
+
             BuildWebHost(args).Run();
         }
 
